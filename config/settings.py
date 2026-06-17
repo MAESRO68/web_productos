@@ -116,3 +116,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+# Si un usuario intenta entrar en una vista protegida sin iniciar sesión,
+# Django lo enviará a esta URL.
+LOGIN_URL = 'productos:login'
+
+# Después de iniciar sesión correctamente, Django lo redirigirá aquí.
+LOGIN_REDIRECT_URL = 'productos:home'
+
+# Después de cerrar sesión, el usuario volverá a esta página.
+LOGOUT_REDIRECT_URL = 'productos:home'

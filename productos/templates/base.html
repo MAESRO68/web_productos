@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block titulo %}Catálogo{% endblock %}</title>
+    <style>
+        body { font-family: Arial; margin: 40px; }
+        header { margin-bottom: 20px; }
+        a { text-decoration: none; color: blue; }
+        .btn { padding: 6px 10px; border: 1px solid #333; border-radius: 4px; }
+        .danger { background-color: #ffdddd; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Gestión de Productos y Pedidos</h1>
+    <a href="/">Productos</a> |
+    <a href="/pedidos/">Pedidos</a> |
+    <a href="/producto/crear/">Nuevo producto</a> |
+    <a href="/pedido/crear/">Nuevo pedido</a>
+</header>
+
+<hr>
+
+{% block contenido %}
+{% endblock %}
+
+</head>
+<body>
+  <header class="nav">
+    <div class="container">
+      <a class="brand" href="{% url 'productos:home' %}">web_productos</a>
+      <div class="nav-links">
+        <a href="{% url 'productos:home' %}">Inicio</a>
+        {% if user.is_authenticated %}
+          <span>Hola, {{ user.username }}</span>
+          <form method="post" action="{% url 'productos:logout' %}" style="margin:0;">
+            {% csrf_token %}
+            <button type="submit">Cerrar sesión</button>
+          </form>
+        {% else %}
+          <a href="{% url 'productos:login' %}">Login</a>
+          <a href="{% url 'productos:signup' %}">Registro</a>
+        {% endif %}
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="container footer">
+    Proyecto de ejemplo con Django.
+  </footer>
+
+</body>
+</html>

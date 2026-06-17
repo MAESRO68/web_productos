@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block titulo %}{{ titulo }}{% endblock %}
+
+{% block contenido %}
+<h2>{{ titulo }}</h2>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button type="submit" class="btn">Guardar</button>
+</form>
+
+<a href="/pedidos/">Cancelar</a>
+{% endblock %}

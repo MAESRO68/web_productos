@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block titulo %}Eliminar pedido{% endblock %}
+
+{% block contenido %}
+<h2>Eliminar pedido</h2>
+
+<p>¿Seguro que deseas eliminar el pedido <strong>#{{ pedido.id }}</strong>?</p>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn danger">Sí, eliminar</button>
+</form>
+
+<a href="{% url 'pedido_detalle' pedido.pk %}">Cancelar</a>
+{% endblock %}

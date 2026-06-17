@@ -1,0 +1,26 @@
+{{% extends 'productos/base.html' %}
+
+{% block title %}Inicio | web_productos{% endblock %}
+
+{% block content %}
+  <section class="hero">
+    <div class="card">
+      <h1>Organiza tus pedidos</h1>
+      <p>
+        web_productos es una web sencilla para gestionar productos y pedidos.
+      </p>
+
+      {% if user.is_authenticated %}
+        <p>Has iniciado sesión como <strong>{{ user.username }}</strong>.</p>
+        <p class="muted">
+          En el siguiente bloque del manual añadiremos la gestión de productos.
+        </p>
+      {% else %}
+        <div class="actions">
+          <a class="button" href="{% url 'productos:login' %}">Iniciar sesión</a>
+          <a class="button secondary" href="{% url 'productos:signup' %}">Crear cuenta</a>
+        </div>
+      {% endif %}
+    </div>
+  </section>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block titulo %}Listado de Productos{% endblock %}
+
+{% block contenido %}
+<h2>Listado de Productos</h2>
+
+<ul>
+    {% for producto in productos %}
+        <li>
+            <a href="{% url 'producto_detalle' producto.pk %}">
+                {{ producto.nombre }} — {{ producto.precio }} €
+            </a>
+        </li>
+    {% empty %}
+        <li>No hay productos registrados.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block titulo %}{{ producto.nombre }}{% endblock %}
+
+{% block contenido %}
+<h2>{{ producto.nombre }}</h2>
+
+{% if producto.imagen %}
+    <img src="{{ producto.imagen.url }}" width="300">
+{% endif %}
+
+<p><strong>Categoría:</strong> {{ producto.categoria.nombre }}</p>
+<p><strong>Descripción:</strong> {{ producto.descripcion }}</p>
+<p><strong>Precio:</strong> {{ producto.precio }} €</p>
+<p><strong>Stock:</strong> {{ producto.stock }}</p>
+
+<p>
+    <a class="btn" href="{% url 'producto_editar' producto.pk %}">Editar</a>
+    <a class="btn danger" href="{% url 'producto_borrar' producto.pk %}">Eliminar</a>
+</p>
+
+<a href="/">Volver al listado</a>
+{% endblock %}
